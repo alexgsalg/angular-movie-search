@@ -1,0 +1,8 @@
+<button type="button" class="btn btn-{{ variant }}">
+  <ng-container>
+    <ion-icon *ngIf="icon && iconPosition === 'left'" class="btn--icon me-2" [name]="icon" aria-hidden="true"></ion-icon>
+    <ng-content></ng-content>
+    <ion-icon *ngIf="icon && iconPosition === 'right'" class="btn--icon ms-2" [name]="icon" aria-hidden="true"></ion-icon>
+  </ng-container>
+  <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</button>

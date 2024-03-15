@@ -1,0 +1,11 @@
+
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+
+  &--icon {
+    font-size: 1.5rem;
+  }
+}
