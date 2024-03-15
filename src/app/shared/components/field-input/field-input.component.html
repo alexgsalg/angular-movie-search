@@ -4,10 +4,12 @@
   <input
     [name]="name"
     [placeholder]="placeholder"
-    [formControl]="formControl"
+    [formControl]="control"
     class="field-input__input"
+    [class.border-danger]="control.dirty && control.errors"
     [type]="type"
+    [required]="required"
     >
 
-    <span class="field-input__helper">{{ helperMsg }}</span>
+    <small class="field-input__helper text-muted mt-2">{{ helperMsg }}</small>
 </div>

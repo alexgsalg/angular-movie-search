@@ -1,5 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
  import { ControlValueAccessor, NG_VALUE_ACCESSOR,Validators, FormControl, ValidatorFn } from '@angular/forms'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-field-input',
@@ -22,7 +23,9 @@ export class FieldInputComponent {
   @Input() required: boolean = false;
   @Input() email: boolean = false;
 
-  formControl!: FormControl;
+  control!: FormControl;
+  sub$: Subscription | undefined;
+
   onTouched: any;
   onChange: any;
 
@@ -33,20 +36,16 @@ export class FieldInputComponent {
       validators.push(Validators.required);
     }
 
-    if (this.email) {
-      validators.push(Validators.email);
-    }
-
-    this.formControl = new FormControl('', validators);
+    this.control = new FormControl('', validators);
   }
 
   writeValue(value: any): void {
-    this.formControl.setValue(value);
+    this.control.setValue(value);
   }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
-    this.formControl.valueChanges.subscribe(fn);
+    this.sub$ = this.control.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: any): void {
@@ -54,6 +53,10 @@ export class FieldInputComponent {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.formControl.disable() : this.formControl.enable();
+    isDisabled ? this.control.disable() : this.control.enable();
+  }
+
+  ngOnDestroy() {
+    this.sub$?.unsubscribe()
   }
 }
