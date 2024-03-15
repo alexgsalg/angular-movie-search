@@ -1,0 +1,16 @@
+.search-section {
+
+  &_container {
+    max-width: 800px;
+  }
+
+  &_heading {
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+}

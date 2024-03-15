@@ -2,10 +2,16 @@
 
 .btn {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 0.5rem 2rem;
 
-  &--icon {
-    font-size: 1.5rem;
+  &__icon {
+    font-size: 1.2rem;
   }
+
+  &--full {
+    width: 100%;
+  }
+
 }
