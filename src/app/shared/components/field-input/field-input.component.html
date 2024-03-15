@@ -1,1 +1,13 @@
-<p>field-input works!</p>
+<div class="field-input">
+  <label class="field-input__label" [for]="name">{{ label }}</label>
+
+  <input
+    [name]="name"
+    [placeholder]="placeholder"
+    [formControl]="formControl"
+    class="field-input__input"
+    [type]="type"
+    >
+
+    <span class="field-input__helper">{{ helperMsg }}</span>
+</div>

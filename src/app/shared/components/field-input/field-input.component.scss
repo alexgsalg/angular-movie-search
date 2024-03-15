@@ -1,0 +1,20 @@
+.field-input {
+
+  &__label {}
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--bs-gray-500);
+    border-radius: 0.5rem;
+
+    &:focus {
+      outline: none !important;
+      border-color: var(--bs-primary-text-emphasis);
+    }
+
+    &::placeholder {
+      color: var(--bs-gray-500);
+    }
+  }
+}
