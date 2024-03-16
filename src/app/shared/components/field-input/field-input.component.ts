@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
  import { ControlValueAccessor, NG_VALUE_ACCESSOR,Validators, FormControl, ValidatorFn } from '@angular/forms'
 import { Subscription } from 'rxjs';
 
@@ -22,6 +22,9 @@ export class FieldInputComponent {
   @Input() helperMsg: string = '';
   @Input() required: boolean = false;
   @Input() email: boolean = false;
+
+  @Output() onFocus = new EventEmitter();
+  @Output() onBlur = new EventEmitter();
 
   control!: FormControl;
   sub$: Subscription | undefined;
