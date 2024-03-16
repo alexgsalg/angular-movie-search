@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './modules/home/pages/home/home.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: '',
-    // component: HomeComponent,
+    path: 'home',
     loadChildren: () => import('./modules/home/home.module').then((m) => m.HomeModule)
   },
   {
@@ -13,14 +14,17 @@ const routes: Routes = [
     loadChildren: () => import('./modules/favorites/favorites.module').then((m) => m.FavoritesModule)
   },
   {
-    path: '',
-    redirectTo: '',
+    path: '**',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

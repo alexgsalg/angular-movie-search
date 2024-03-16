@@ -3,6 +3,11 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
+:root {
+  --header-height: 4.5rem;
+  --footer-height: 3.5rem;
+}
+
 * {
   margin: 0;
   padding: 0;
