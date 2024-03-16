@@ -12,6 +12,7 @@ export class ButtonComponent {
   @Input() iconPosition: 'left' | 'right' = 'right';
   @Input() disabled: boolean = false;
   @Input() fullwidth: boolean = false;
+  @Input() short: boolean = false;
   @Input() loading: boolean = false;
 
 }

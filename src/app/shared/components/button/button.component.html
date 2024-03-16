@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-{{ variant }} text-center" [class.btn--full]="fullwidth">
+<button type="button" class="btn btn-{{ variant }} text-center" [class.btn--full]="fullwidth" [class.btn--short]="short">
   <ng-container *ngIf="!loading; else loadingState">
     <ion-icon *ngIf="icon && iconPosition === 'left'" class="btn__icon me-2" [name]="icon" aria-hidden="true"></ion-icon>
     <ng-content></ng-content>
