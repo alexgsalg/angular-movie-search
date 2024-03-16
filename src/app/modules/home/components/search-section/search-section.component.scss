@@ -1,11 +1,15 @@
 .search-section {
 
   &_container {
-    max-width: 800px;
+    width: clamp(40rem, 65vw, 750px);
+
+    @media  (max-width: 580px) {
+      width: clamp(200px, 85vw, 720px);
+    }
   }
 
   &_heading {
-    max-width: 600px;
+    max-width: 520px;
     margin-inline: auto;
     text-align: center;
   }
