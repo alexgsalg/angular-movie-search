@@ -8,14 +8,14 @@
     </div>
 
     <form [formGroup]="form" class="search-section_bar d-flex row">
-      <div class="col-12 col-lg-6 mb-3 mb-lg-0 ">
+      <div class="col-12 col-lg-6 mb-3 mb-lg-0 px-2">
         <app-field-input
           placeholder="Search movie by title" type="text"
           formControlName="title"
           name="title">
         </app-field-input>
       </div>
-      <div class="col-6 col-lg-3">
+      <div class="col-6 col-lg-3 px-2">
         <app-button
           variant="primary"
           icon="search-outline"
@@ -24,7 +24,7 @@
           Search
         </app-button>
       </div>
-      <div class="col-6 col-lg-3">
+      <div class="col-6 col-lg-3 px-2">
         <app-button variant="secondary" [fullwidth]="true">Reset</app-button>
       </div>
     </form>
