@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieSearch } from '@core/models/movies.model';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  movieToSearch: MovieSearch | undefined;
 
 }

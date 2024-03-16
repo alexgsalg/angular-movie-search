@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,8 +12,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { FieldInputComponent } from './components/field-input/field-input.component';
 import { MovieSectionComponent } from './components/movie-section/movie-section.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgbRatingModule
   ],
   exports: [
