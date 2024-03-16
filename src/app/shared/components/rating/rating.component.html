@@ -1,1 +1,5 @@
-<p>rating works!</p>
+<ngb-rating [(rate)]="rating" [readonly]="readonly">
+	<ng-template let-fill="fill" let-index="index">
+    <ion-icon name="star{{ handleStarFill(fill) }}" [class.filled]="fill === 100" [ngStyle]="{'color': 'var(' + colorVar +')'}"></ion-icon>
+	</ng-template>
+</ngb-rating>
