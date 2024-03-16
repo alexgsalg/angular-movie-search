@@ -15,6 +15,7 @@ export class SearchSectionComponent {
   @Output() onSelect: EventEmitter<MovieSearch> = new EventEmitter();
 
   form: FormGroup;
+  inputFocused: boolean = false;
   suggestions: MovieSearch[] = [];
   suggestionLoading: boolean = false;
 
@@ -36,13 +37,14 @@ export class SearchSectionComponent {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        finalize(() => this.suggestionLoading = false),
       )
       .subscribe((value) => {
         this.suggestionLoading = true;
 
-        this.moviesService.searchMoviesByTerm(value).subscribe({
-          next: (res) => console.log(res),
+        this.moviesService.searchMoviesByTerm(value)
+          .pipe(finalize(() => this.suggestionLoading = false),)
+          .subscribe({
+          next: (res) => this.suggestions = res,
           error: (err) => console.log(err)
         })
       })

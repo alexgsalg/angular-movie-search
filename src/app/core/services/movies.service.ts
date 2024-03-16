@@ -9,7 +9,7 @@ import { environment } from './../../../envonments/environment';
   providedIn: 'root'
 })
 export class MoviesService {
-  baseUrl = environment.api;
+  baseUrl = environment.api.endpoint;
 
   constructor(private http: HttpClient) { }
 

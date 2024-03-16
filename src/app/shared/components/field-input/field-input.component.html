@@ -9,8 +9,8 @@
     [class.border-danger]="control.dirty && control.errors"
     [type]="type"
     [required]="required"
-    (focus)="onFocus()"
-    (blur)="onBlur()"
+    (focus)="onFocus.emit()"
+    (blur)="onBlur.emit()"
     >
 
     <small class="field-input__helper text-muted mt-2">{{ helperMsg }}</small>
