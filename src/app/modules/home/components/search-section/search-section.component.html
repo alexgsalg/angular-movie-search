@@ -8,31 +8,56 @@
     </div>
 
     <form [formGroup]="form" class="search-section_bar d-flex row">
-      <div class="col-12 col-lg-6 mb-3 mb-lg-0 px-2">
+      <div class="col-12 col-lg-6 mb-3 mb-lg-0 px-2 position-relative" #suggestionList>
         <app-field-input
-          #title
           placeholder="Start typing the movie title" type="text"
           formControlName="title"
           name="title"
-          (onFocus)="inputFocused = true"
-          (onBlur)="inputFocused = true"
+          (onFocus)="this.inputFocused = true"
           ></app-field-input>
+
+          <!-- Suggestions -->
           <ng-container *ngIf="inputFocused && form.get('title')?.value?.length > 3">
-            {{ suggestionLoading ? 'Loading...' : (suggestions | json) }}
+            <ul class="search-section_suggestions shadow">
+              <ng-container *ngIf="!suggestionLoading; else loadingSuggestions">
+                <li *ngFor="let suggestion of suggestions"
+                  class="search-section_suggestions__item d-flex align-items-center justify-content-between"
+                  (click)="onSuggestionsSelect(suggestion)"
+                >
+                  <small class="d-inline-block text-muted">{{suggestion.Title | truncate:30 }}  - {{ suggestion.Year }}</small>
+                  <span class="small-text text-muted .d-none .d-md-inline-block ms-auto">({{ suggestion.imdbID }})</span>
+                </li>
+              </ng-container>
+
+              <ng-template #loadingSuggestions>
+
+                <div class="d-flex justify-content-center p-4">
+                  <small class="d-inline-block text-muted text-center">Loading</small>
+                  <div class="spinner-grow spinner-grow-sm text-secondary" role="status"> </div>
+                </div>
+              </ng-template>
+
+            </ul>
           </ng-container>
       </div>
+
       <div class="col-6 col-lg-3 px-2">
         <app-button
           variant="primary"
           icon="search-outline"
           [fullwidth]="true"
+          [isDisabled]="!form.value.title"
+          (click)="onSearch()"
         >
           Search
         </app-button>
       </div>
+
       <div class="col-6 col-lg-3 px-2">
-        <app-button variant="secondary" [fullwidth]="true">Reset</app-button>
+        <app-button variant="secondary" [fullwidth]="true" (click)="onReset()">Reset</app-button>
       </div>
+
     </form>
   </div>
 </section>
+

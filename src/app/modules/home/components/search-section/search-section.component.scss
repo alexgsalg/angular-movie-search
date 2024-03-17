@@ -17,4 +17,55 @@
   &__title {
     font-weight: 700;
   }
+
+  &_suggestions {
+    position: absolute;
+    max-height: calc(36px * 5);
+    top: 105%;
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0;
+
+    background-color: var(--bs-white);
+    border: 1px solid var(--bs-gray-300);
+    border-radius: var(--bs-border-radius);
+    overflow: auto;
+
+    &:empty {
+      display: none;
+    }
+
+    &__item {
+      padding: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--bs-gray-100);
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--bs-gray-200);
+      }
+    }
+  }
+}
+
+.small-text {
+  font-size: 0.5rem;
+}
+ /* width */
+ ::-webkit-scrollbar {
+  width: 0.25rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

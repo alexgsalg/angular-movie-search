@@ -24,11 +24,11 @@ export interface MovieRating {
   Value: string;
 }
 
-export interface IMovieSearch {
-  Search: MovieSearch[];
+export interface IMovieSuggestion {
+  Search: MovieSuggestion[];
 }
 
-export interface MovieSearch {
+export interface MovieSuggestion {
   Title: string;
   Year: string;
   imdbID: string;
