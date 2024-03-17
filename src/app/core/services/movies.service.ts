@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders  } from '@angular/common/http';
 import { IMovie, IMovieSuggestion, MovieSuggestion } from '@core/models/movies.model';
 import { Observable, map, tap } from 'rxjs';
 import { environment } from './../../../envonments/environment';

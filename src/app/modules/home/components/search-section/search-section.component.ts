@@ -71,9 +71,10 @@ export class SearchSectionComponent {
 
         this.fetchSuggestions(value);
       });
-  }
+    }
 
-  fetchSuggestions(term: string) {
+    fetchSuggestions(term: string) {
+    this.suggestions = [];
     this.moviesService$
     .searchMoviesSuggestions(term)
     .pipe(finalize(() => (this.suggestionLoading = false)))
@@ -93,7 +94,7 @@ export class SearchSectionComponent {
 
   onSearch() {
     if (!this.form.value.title) return;
-    this.onSelect.emit(this.form.value.title)
+    this.onSelect.emit(this.suggestionSelected)
   }
 
   onReset(): void {

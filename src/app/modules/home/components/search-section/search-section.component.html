@@ -20,20 +20,31 @@
           <ng-container *ngIf="inputFocused && form.get('title')?.value?.length > 3">
             <ul class="search-section_suggestions shadow">
               <ng-container *ngIf="!suggestionLoading; else loadingSuggestions">
-                <li *ngFor="let suggestion of suggestions"
-                  class="search-section_suggestions__item d-flex align-items-center justify-content-between"
-                  (click)="onSuggestionsSelect(suggestion)"
-                >
-                  <small class="d-inline-block text-muted">{{suggestion.Title | truncate:30 }}  - {{ suggestion.Year }}</small>
-                  <span class="small-text text-muted .d-none .d-md-inline-block ms-auto">({{ suggestion.imdbID }})</span>
-                </li>
+                <ng-container *ngIf="suggestions && suggestions.length > 0; else emptySuggestions">
+                  <li *ngFor="let suggestion of suggestions"
+                    class="search-section_suggestions__item d-flex align-items-center justify-content-between"
+                    (click)="onSuggestionsSelect(suggestion)"
+                  >
+                    <small class="d-inline-block text-muted">{{suggestion.Title | truncate:30 }}  - {{ suggestion.Year }}</small>
+                    <span class="small-text text-muted .d-none .d-md-inline-block ms-auto">({{ suggestion.imdbID }})</span>
+                  </li>
+                  <li class="search-section_suggestions__item py-1" style="pointer-events: none;">
+                    <small class="text-muted">Hmm... Maybe if you keep typing.</small>
+                  </li>
+                </ng-container>
               </ng-container>
 
+              <!-- Loading Suggestions -->
               <ng-template #loadingSuggestions>
-
                 <div class="d-flex justify-content-center p-4">
-                  <small class="d-inline-block text-muted text-center">Loading</small>
-                  <div class="spinner-grow spinner-grow-sm text-secondary" role="status"> </div>
+                  <div class="loader"></div>
+                </div>
+              </ng-template>
+
+              <!-- Loading Suggestions -->
+              <ng-template #emptySuggestions>
+                <div class="d-flex justify-content-center p-4">
+                  <span>No Movies with this title!</span>
                 </div>
               </ng-template>
 
