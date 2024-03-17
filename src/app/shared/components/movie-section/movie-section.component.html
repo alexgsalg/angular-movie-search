@@ -1,32 +1,72 @@
 <section class="movie-info pt-3 pb-5 py-md-5">
   <div class="movie-info_container container-fluid">
-    <article class="row flex-md-row-reverse align-items-stretch">
-      <picture class="movie-info_picture col-12 col-md-4 figure pb-4 p-md-0">
-        <img class="movie-info_picture__poster figure-img rounded" [src]="movie?.thumb ?? './assets/images/default-image.jpg'" alt="movie poster">
-      </picture>
+    <ng-container *ngIf="!isLoading; else loadingState">
+      <article class="row flex-md-row-reverse align-items-start">
+        <picture class="movie-info_picture col-12 col-md-4 figure pb-4 p-md-0">
+          <img class="movie-info_picture__poster figure-img rounded" [src]="movie?.Poster ?? './assets/images/default-image.jpg'" alt="movie poster">
+        </picture>
 
-      <div class="movie-info_about col-12 col-md-8 pe-3">
-        <h2 class="movie-info_about__title text-body">Movie title</h2>
-        <p class="movie-info_about__synopsis mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste temporibus cum animi! Sequi, reiciendis iste nisi adipisci doloremque quas molestias? Distinctio dolores explicabo fugit quisquam ipsa consectetur quia, repellat qui.</p>
+        <div class="movie-info_about col-12 col-md-8 pe-3">
+          <h2 class="movie-info_about__title text-body">{{ movie?.Title }}({{movie?.imdbID}})</h2>
+          <p class="movie-info_about__synopsis mb-4 text-muted">{{ movie?.Plot }}</p>
 
-        <ul class="movie-info_about_details ps-0 mb-4">
-          <li class="movie-info_about_details__items d-flex align-items-center py-1">
-            <strong class="me-2">Actor</strong>
-            <span>Lorem, ipsum dolor.</span>
-          </li>
-          <li class="movie-info_about_details__items d-flex align-items-center py-1">
-            <strong class="me-2">Review</strong>
-            <app-rating [rating]="3.4"></app-rating>
-          </li>
-        </ul>
+          <ul class="movie-info_about_details ps-0 mb-4">
+            <li class="movie-info_about_details__items d-flex align-items-center py-1">
+              <strong class="me-2">Actor:</strong>
+              <small>{{ movie?.Actors }}</small>
+            </li>
+            <li class="movie-info_about_details__items d-flex align-items-center py-1">
+              <strong class="me-2">Genre:</strong>
+              <small>{{ movie?.Genre }}</small>
+            </li>
+            <li *ngIf="rating" class="movie-info_about_details__items d-flex align-items-center py-1">
+              <strong class="me-2">Review:</strong>
+              <app-rating [rating]="rating"></app-rating>
+            </li>
 
-        <app-button
-          variant="primary"
-          icon="heart-outline"
-        >
-          Favorite
-        </app-button>
-      </div>
-    </article>
+            <ng-container *ngIf="showMore">
+              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+                <strong class="me-2">Awards:</strong>
+                <small>{{ movie?.Awards }}</small>
+              </li>
+              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+                <strong class="me-2">Duration:</strong>
+                <small>{{ movie?.Runtime }}</small>
+              </li>
+              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+                <strong class="me-2">Director:</strong>
+                <small>{{ movie?.Director }}</small>
+              </li>
+            </ng-container>
+            <a class="movie-info_about_details__more" (click)="showMore = !showMore">Show more</a>
+          </ul>
+
+          <app-button
+            variant="primary"
+            icon="heart-outline"
+          >
+            Favorite
+          </app-button>
+        </div>
+      </article>
+    </ng-container>
+
+    <!-- Loading -->
+    <ng-template #loadingState>
+      <article class="row flex-md-row-reverse align-items-stretch">
+        <picture class="movie-info_picture col-12 col-md-4 figure pb-4 p-md-0 skeleton">
+        </picture>
+
+        <div class="movie-info_about col-12 col-md-8 pe-3">
+          <h2 class="movie-info_about__title skeleton" style="width: 200px; height: 30px;"></h2>
+          <p class="movie-info_about__synopsis mb-4 skeleton" style="height: 100px;"></p>
+
+          <ul class="movie-info_about_details ps-0 mb-4">
+            <li class="movie-info_about_details__items d-flex skeleton mb-2" style="width: 180px; height: 25px;"></li>
+            <li class="movie-info_about_details__items d-flex skeleton" style="width: 180px; height: 25px;"></li>
+          </ul>
+        </div>
+      </article>
+    </ng-template>
   </div>
 </section>

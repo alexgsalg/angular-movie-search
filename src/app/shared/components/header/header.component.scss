@@ -2,6 +2,7 @@ header {
   position: fixed;
   inset: 0;
   height: var(--header-height);
+  z-index: 200;
 }
 
 .nav-link {

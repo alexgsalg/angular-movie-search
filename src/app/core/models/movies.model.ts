@@ -4,7 +4,7 @@ export interface IMovie {
   Rated: string;
   Releases: string;
   Runtime: string;
-  Genres: string;
+  Genre: string;
   Director: string;
   Writer: string;
   Actors: string;

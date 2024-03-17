@@ -40,7 +40,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/sass/global.scss"
             ],
             "scripts": []
           },

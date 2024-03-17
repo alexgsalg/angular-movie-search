@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
+// models
+import { IMovie } from '@core/models/movies.model';
 
 @Component({
   selector: 'app-movie-section',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./movie-section.component.scss'],
 })
 export class MovieSectionComponent {
-  movie!: any
+  @Input() movie: IMovie | undefined;
+  @Input() isLoading: boolean = false;
+
+  showMore: boolean = false;
+  rating: number | undefined = undefined;
+
+  ngOnChanges(changes: SimpleChanges):void {
+    if(changes.isLoading.previousValue !== changes.isLoading.currentValue ) {
+      this.rating =(Number(changes.movie.currentValue?.imdbRating) / 2) || undefined;
+    }
+  }
 }

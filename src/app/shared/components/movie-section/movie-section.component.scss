@@ -16,7 +16,7 @@
     height: 100%;
     object-fit: cover;
     max-width: 300px;
-    aspect-ratio: 2 / 2.5;
+    aspect-ratio: 2 / 3;
     margin-left: auto;
     }
   }
@@ -24,6 +24,21 @@
   &_about {
     & > * {
       max-width: 700px;
+    }
+
+    &_details {
+
+      &__more {
+        font-size: 12px;
+        line-height: normal;
+        color: var(--bs-light-text-emphasis);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--bs-primary-text-emphasis);
+        }
+      }
     }
   }
 

@@ -13,10 +13,14 @@ export class RatingComponent {
   @Input() readonly: boolean = false;
   @Input() colorVar: string = '--bs-yellow';
 
-  constructor(config: NgbRatingConfig) {
+  constructor(private config: NgbRatingConfig) {
 		config.max = this.max;
-		config.readonly = this.readonly;
 	}
+
+  ngOnInit(): void {
+    this.config.max = this.max;
+    this.config.readonly = this.readonly;
+  }
 
   handleStarFill(fill: number): string {
     if (fill <= 10 ) return '-outline';
