@@ -2,7 +2,7 @@ import { MovieState } from './../store/movies/movies.reducer';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IMovie, IMovieSuggestion, MovieSuggestion } from '@core/models/movies.model';
-import { Observable, filter, map, of, tap } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { environment } from './../../../envonments/environment';
 import { addMovie } from '@core/store/movies/movies.actions';

@@ -5,9 +5,10 @@ import { ToastService } from '@shared/standalones/toast/toast.service';
 import { Store } from '@ngrx/store';
 // models
 import { IMovie, MovieSuggestion } from '@core/models/movies.model';
-import { Observable, finalize } from 'rxjs';
-import { selectAllMovies, selectMovies } from '@core/store/movies/movies.selectors';
+// store
+import { selectMovies } from '@core/store/movies/movies.selectors';
 // imports
+import { Observable, finalize } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -22,14 +23,12 @@ export class HomeComponent {
   // Injects
   toastService$ = inject(ToastService);
   moviesService$ = inject(MoviesService);
-  store$ = inject(Store)
+  store$ = inject(Store);
 
   // Store
   allMovies$: Observable<IMovie[]> = this.store$.select(selectMovies);
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onFetchMovie(movie: MovieSuggestion) {
     if (!movie) {

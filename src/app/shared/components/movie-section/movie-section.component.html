@@ -7,7 +7,8 @@
         </picture>
 
         <div class="movie-info_about col-12 col-md-8 pe-3">
-          <h2 class="movie-info_about__title text-body">{{ movie?.Title }}({{movie?.imdbID}})</h2>
+          <h2 class="movie-info_about__title text-body">{{ movie?.Title }}
+            <small class="ms-2">({{movie?.imdbID}})</small></h2>
           <p class="movie-info_about__synopsis mb-4 text-muted">{{ movie?.Plot }}</p>
 
           <ul class="movie-info_about_details ps-0 mb-4">
@@ -42,10 +43,11 @@
           </ul>
 
           <app-button
-            variant="primary"
-            icon="heart-outline"
+            [variant]="isFavorited ? 'secondary' : 'primary'"
+            [icon]="isFavorited ? 'heart-dislike-outline' : 'heart-outline'"
+            (click)="toggleFavorite()"
           >
-            Favorite
+            {{ isFavorited ? 'Unfavorite' : 'Favorite' }}
           </app-button>
         </div>
       </article>
