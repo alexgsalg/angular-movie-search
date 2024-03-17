@@ -6,5 +6,5 @@ export const selectAllMovies = (state: AppState) => state.movies;
 
 export const selectMovies = createSelector(
   selectAllMovies,
-  (state: MovieState) => state.movies
+  (state: MovieState) => state?.movies
   );

@@ -10,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { ToastsComponent } from '@shared/standalones/toast/toast.component';
+// Store
+import { movieReducer } from '@core/store/movies/movies.reducer';
+import { favoritesReducer } from '@core/store/favorites/favorites.reducer';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,7 @@ import { ToastsComponent } from '@shared/standalones/toast/toast.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ movies: movieReducer, favorites: favoritesReducer}, {}),
     NgbModule,
     ToastsComponent
   ],

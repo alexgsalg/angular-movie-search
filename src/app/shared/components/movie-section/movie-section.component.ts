@@ -15,8 +15,8 @@ export class MovieSectionComponent {
   rating: number | undefined = undefined;
 
   ngOnChanges(changes: SimpleChanges):void {
-    if(changes.isLoading.previousValue !== changes.isLoading.currentValue ) {
-      this.rating =(Number(changes.movie.currentValue?.imdbRating) / 2) || undefined;
+    if(changes.isLoading?.previousValue !== changes.isLoading?.currentValue ) {
+      this.rating =(Number(changes.movie?.currentValue?.imdbRating || 0) / 2) || undefined;
     }
   }
 }
