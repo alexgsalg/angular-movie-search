@@ -102,7 +102,38 @@ export class SearchSectionComponent {
     this.suggestions= [];
   }
 
-  nhOnDestroy(): void {
+  linkIndex = 0;
+  startIndex: number = 0;
+
+  navigateUsingKey(ev: KeyboardEvent) {
+    if (!this.inputFocused) return;
+
+    switch (ev.key ) {
+      case 'ArrowUp':
+        this.linkIndex === -1 ? this.linkIndex = 0 : this.linkIndex-- ;
+      break;
+
+      case 'ArrowDown':
+        this.linkIndex === this.suggestions.length ?  this.suggestions.length : this.linkIndex++ ;
+      break;
+
+      case 'Enter':
+        this.selectSuggestionOnEnter();
+      break;
+
+      case 'Escape':
+        this.inputFocused = false;
+      break;
+    }
+  }
+
+  selectSuggestionOnEnter(){
+    this.suggestionSelected = this.suggestions[this.linkIndex];
+    this.form.patchValue( { title: this.suggestions[this.linkIndex].Title });
+    this.inputFocused = false;
+  }
+
+  ngOnDestroy(): void {
     this.formSub$?.unsubscribe();
   }
 }

@@ -14,15 +14,17 @@
           formControlName="title"
           name="title"
           (onFocus)="this.inputFocused = true"
+          (keyup)="navigateUsingKey($event)"
           ></app-field-input>
 
           <!-- Suggestions -->
-          <ng-container *ngIf="inputFocused && form.get('title')?.value?.length > 3">
+          <ng-container *ngIf="inputFocused && form.get('title')?.value?.length > 1">
             <ul class="search-section_suggestions shadow">
               <ng-container *ngIf="!suggestionLoading; else loadingSuggestions">
                 <ng-container *ngIf="suggestions && suggestions.length > 0; else emptySuggestions">
-                  <li *ngFor="let suggestion of suggestions"
+                  <li *ngFor="let suggestion of suggestions; let idx = index"
                     class="search-section_suggestions__item d-flex align-items-center justify-content-between"
+                    [ngClass]="{'focused' : idx === linkIndex}"
                     (click)="onSuggestionsSelect(suggestion)"
                   >
                     <small class="d-inline-block text-muted">{{suggestion.Title | truncate:30 }}  - {{ suggestion.Year }}</small>
