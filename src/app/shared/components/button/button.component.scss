@@ -1,3 +1,13 @@
+:host {
+  pointer-events: none;
+}
+:host ::ng-deep button * {
+  pointer-events: none;
+}
+
+button {
+  pointer-events: auto;
+}
 
 
 .btn {

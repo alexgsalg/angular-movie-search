@@ -1,8 +1,22 @@
-<button type="button" class="btn btn-{{ variant }} text-center" [class.btn--full]="fullwidth" [class.btn--short]="short">
+<button
+  type="button"
+  class="btn btn-{{ variant }} text-center"
+  [class.btn--full]="fullwidth"
+  [class.btn--short]="short"
+  [disabled]="isDisabled || loading"
+  (click)="onClick($event)">
   <ng-container *ngIf="!loading; else loadingState">
-    <ion-icon *ngIf="icon && iconPosition === 'left'" class="btn__icon me-2" [name]="icon" aria-hidden="true"></ion-icon>
+    <ion-icon
+      *ngIf="icon && iconPosition === 'left'"
+      class="btn__icon me-2"
+      [name]="icon"
+      aria-hidden="true"></ion-icon>
     <ng-content></ng-content>
-    <ion-icon *ngIf="icon && iconPosition === 'right'" class="btn__icon ms-2" [name]="icon" aria-hidden="true"></ion-icon>
+    <ion-icon
+      *ngIf="icon && iconPosition === 'right'"
+      class="btn__icon ms-2"
+      [name]="icon"
+      aria-hidden="true"></ion-icon>
   </ng-container>
 
   <ng-template #loadingState></ng-template>

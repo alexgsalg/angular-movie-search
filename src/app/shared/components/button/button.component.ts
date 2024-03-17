@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -10,9 +10,15 @@ export class ButtonComponent {
   @Input() variant: string = 'primary';
   @Input() icon: string | undefined;
   @Input() iconPosition: 'left' | 'right' = 'right';
-  @Input() disabled: boolean = false;
+  @Input() isDisabled: boolean = false;
   @Input() fullwidth: boolean = false;
   @Input() short: boolean = false;
   @Input() loading: boolean = false;
 
+  @Output() click: EventEmitter<MouseEvent> = new EventEmitter();
+
+  onClick(ev: MouseEvent): void {
+    ev.stopPropagation();
+    this.click.emit(ev);
+  }
 }
