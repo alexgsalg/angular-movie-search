@@ -1,0 +1,19 @@
+.favorites-page {
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &_card {
+
+    &__img {
+      max-height: 150px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__title {
+      font-size: 14px;
+    }
+  }
+}

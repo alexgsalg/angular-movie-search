@@ -7,8 +7,12 @@
     margin-inline: auto;
     text-align: right;
 
+    @media (max-width: 370px) {
+      width: 140px;
+    }
+
     @media (max-width: 768px) {
-      width: 50%;
+      width: 160px;
     }
 
     &__poster {

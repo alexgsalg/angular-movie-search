@@ -12,11 +12,11 @@
           <p class="movie-info_about__synopsis mb-4 text-muted">{{ movie?.Plot }}</p>
 
           <ul class="movie-info_about_details ps-0 mb-4">
-            <li class="movie-info_about_details__items d-flex align-items-center py-1">
+            <li class="movie-info_about_details__items d-flex align-items-start py-1">
               <strong class="me-2">Actor:</strong>
               <small>{{ movie?.Actors }}</small>
             </li>
-            <li class="movie-info_about_details__items d-flex align-items-center py-1">
+            <li class="movie-info_about_details__items d-flex align-items-start py-1">
               <strong class="me-2">Genre:</strong>
               <small>{{ movie?.Genre }}</small>
             </li>
@@ -26,15 +26,15 @@
             </li>
 
             <ng-container *ngIf="showMore">
-              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+              <li class="movie-info_about_details__items d-flex align-items-start py-1">
                 <strong class="me-2">Awards:</strong>
                 <small>{{ movie?.Awards }}</small>
               </li>
-              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+              <li class="movie-info_about_details__items d-flex align-items-start py-1">
                 <strong class="me-2">Duration:</strong>
                 <small>{{ movie?.Runtime }}</small>
               </li>
-              <li class="movie-info_about_details__items d-flex align-items-center py-1">
+              <li class="movie-info_about_details__items d-flex align-items-start py-1">
                 <strong class="me-2">Director:</strong>
                 <small>{{ movie?.Director }}</small>
               </li>
@@ -56,7 +56,7 @@
     <!-- Loading -->
     <ng-template #loadingState>
       <article class="row flex-md-row-reverse align-items-stretch">
-        <picture class="movie-info_picture col-12 col-md-4 figure pb-4 p-md-0 skeleton">
+        <picture class="movie-info_picture col-12 col-md-4 figure mb-4 m-md-0 skeleton">
         </picture>
 
         <div class="movie-info_about col-12 col-md-8 pe-3">

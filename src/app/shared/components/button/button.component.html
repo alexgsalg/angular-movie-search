@@ -14,7 +14,8 @@
     <ng-content></ng-content>
     <ion-icon
       *ngIf="icon && iconPosition === 'right'"
-      class="btn__icon ms-2"
+      class="btn__icon"
+      [class.ms-2]="!iconOnly"
       [name]="icon"
       aria-hidden="true"></ion-icon>
   </ng-container>

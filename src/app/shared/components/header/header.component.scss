@@ -1,12 +1,25 @@
-header {
+.header {
   position: fixed;
   inset: 0;
   height: var(--header-height);
   z-index: 200;
+
+  &__logo {
+    height: 30px;
+  }
 }
 
 .nav-link {
   &.active {
     color: var(--bs-gray-200) !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    --header-height: 4.5rem;
+    &__logo {
+      height: 40px;
+    }
   }
 }

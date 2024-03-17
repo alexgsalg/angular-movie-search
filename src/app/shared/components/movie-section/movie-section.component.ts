@@ -45,7 +45,7 @@ export class MovieSectionComponent {
     }
   }
 
-  validateFavoriteMovie(id: string): boolean {
+  private validateFavoriteMovie(id: string): boolean {
     this.allFavorites$.subscribe((state) => {
       console.log('this.allFavorites$.subscribe > state:', state);
       this.isFavorited = state.some((m) => m.imdbID === id)

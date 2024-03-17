@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() icon: string | undefined;
   @Input() iconPosition: 'left' | 'right' = 'right';
   @Input() isDisabled: boolean = false;
+  @Input() iconOnly: boolean = false;
   @Input() fullwidth: boolean = false;
   @Input() short: boolean = false;
   @Input() loading: boolean = false;

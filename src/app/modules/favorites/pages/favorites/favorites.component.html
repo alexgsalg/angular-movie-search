@@ -1,5 +1,26 @@
 <section class="favorites-page">
-  <div class="favorites-page_container container">
-    <h2>Favorites</h2>
+  <div class="favorites-page_container container py-3 py-md-5">
+    <h2 class="favorites-page__title text-body text-center">Favorites</h2>
+
+    <div class="row">
+      <div *ngFor="let movie of allFavorites$ | async" class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <article class="favorites-page_card card mb-3">
+          <img [src]="movie?.Poster" class="favorites-page_card__img card-img-top" [alt]="movie?.Title">
+          <div class="card-body">
+            <h5 class="favorites-page_card__title mb-2">{{ movie?.Title }}</h5>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted ">{{ movie?.imdbID }}</small>
+              <app-button
+              [short]="true"
+              [variant]="isFavorited ? 'secondary' : 'primary'"
+              [icon]="isFavorited ? 'heart-dislike-outline' : 'heart-outline'"
+              [iconOnly]="true"
+              (click)="toggleFavorite(movie)"
+            ></app-button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>

@@ -1,17 +1,17 @@
-<header class="p-3 bg-dark text-white">
+<header class="header p-3 bg-dark text-white">
   <div class="container">
     <div class="d-flex align-items-center justify-content-between">
       <a href="/" class="d-flex col-auto align-items-center me-4 text-white text-decoration-none">
-        <img src="./assets/images/movies_logo.png" height="40" alt="Project logo">
+        <img src="./assets/images/movies_logo.png" class="header__logo" alt="Project logo">
       </a>
 
-      <ul class="nav col-6 col-lg-auto me-auto mb-2 justify-content-start mb-md-0">
+      <ul class="nav col-8 col-lg-auto me-auto justify-content-start mb-md-0">
         <li><a routerLink="home" routerLinkActive="active" class="nav-link px-2 text-secondary">Home</a></li>
         <li><a routerLink="favorites" routerLinkActive="active" class="nav-link px-2 text-secondary">Favorites</a></li>
       </ul>
 
       <div class="col-4 text-end">
-        <app-button variant="warning" class="d-inline-block" [short]="true">Access</app-button>
+        <app-button variant="warning" class="d-none d-lg-inline-block" [short]="true">Access</app-button>
       </div>
     </div>
   </div>
