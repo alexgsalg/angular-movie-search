@@ -1,0 +1,13 @@
+<ngb-toast
+  *ngFor="let toast of toastService.toasts"
+  [class]="toast.classname"
+  [autohide]="true"
+  [delay]="toast.delay || 5000"
+  (hidden)="toastService.remove(toast)"
+>
+<div class="d-flex align-items-center">
+  <ion-icon *ngIf="toast.icon" class="Toast__icon me-2" [name]="toast.icon" aria-hidden="true"></ion-icon>
+  <ng-container>{{ toast.message }}</ng-container>
+</div>
+</ngb-toast>
+
