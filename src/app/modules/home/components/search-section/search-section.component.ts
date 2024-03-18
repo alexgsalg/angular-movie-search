@@ -3,6 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Input,
   Output,
   ViewChild,
   inject,
@@ -27,7 +28,7 @@ import { ToastService } from '@shared/standalones/toast/toast.service';
 })
 export class SearchSectionComponent {
   @ViewChild('suggestionList') suggestionList: ElementRef | undefined;
-
+  @Input() isLoading: boolean = false;
   @Output() onSelect: EventEmitter<MovieSuggestion> = new EventEmitter();
 
   form: FormGroup;
